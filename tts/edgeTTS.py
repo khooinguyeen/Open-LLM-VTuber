@@ -3,7 +3,7 @@ import os
 from pathlib import Path
 
 import edge_tts
-from .tts_interface import TTSInterface
+from tts_interface import TTSInterface
 
 current_dir = os.path.dirname(os.path.abspath(__file__))
 sys.path.append(current_dir)
@@ -58,13 +58,19 @@ class TTSEngine(TTSInterface):
         return file_name
 
 
+# if __name__ == "__main__":
+#     tts = TTSEngine()
+#     tts.speak(
+#         "Hello World! You no, this is a very interesting phenomenoooooon that somebody is reading this stupid code",
+#         lambda: print(">> Start"),
+#         lambda: print(">> End"),
+#     )
+
 if __name__ == "__main__":
-    tts = TTSEngine()
-    tts.speak(
-        "Hello World! You no, this is a very interesting phenomenoooooon that somebody is reading this stupid code",
-        lambda: print(">> Start"),
-        lambda: print(">> End"),
-    )
+    tts = TTSEngine(voice="en-US-AvaMultilingualNeural")
+    file_path = tts.generate_audio("This is a test for EdgeTTS engine.")
+    if file_path:
+        print(f"EdgeTTS: Audio saved to {file_path}")
 
 
 # en-US-AvaMultilingualNeural

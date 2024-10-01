@@ -41,6 +41,13 @@ class TTSFactory:
         elif engine_type == "piperTTS":
             from .piperTTS import TTSEngine as PiperTTSEngine
             return PiperTTSEngine(voice_path=kwargs.get("voice_model_path"), verbose=kwargs.get("verbose"))
+        elif engine_type == "playhtTTS":
+            from .playhtTTS import TTSEngine as PlayHTTTSEngine
+            return PlayHTTTSEngine(
+                voice=kwargs.get("voice"),
+                user_id=kwargs.get("user_id"),
+                secret_key=kwargs.get("secret_key")
+            )
             
         else:
             raise ValueError(f"Unknown TTS engine type: {engine_type}")

@@ -6,13 +6,17 @@ from pathlib import Path
 from tts_interface import TTSInterface
 
 class TTSEngine(TTSInterface):
-    def __init__(self, voice="s3://voice-cloning-zero-shot/ea58fa16-2b04-4042-883e-02018079eb9f/au-tenaage-voice/manifest.json"):
+    def __init__(
+            self, 
+            voice="s3://voice-cloning-zero-shot/ea58fa16-2b04-4042-883e-02018079eb9f/au-tenaage-voice/manifest.json",
+            user_id="aBmeEqyT4Abe6wNaiTGaAX7xCx82", 
+            secret_key="16f2234ed3c3447f819869eeddc7f687"):
         self.voice = voice
-        self.user_id = "aBmeEqyT4Abe6wNaiTGaAX7xCx82"  # Replace with your PlayHT User ID
-        self.secret_key = "16f2234ed3c3447f819869eeddc7f687"  # Replace with your PlayHT Secret Key
+        self.user_id = user_id  # Replace with your PlayHT User ID
+        self.secret_key = secret_key  # Replace with your PlayHT Secret Key
         self.temp_audio_file = "temp"
         self.file_extension = "mp3"
-        self.new_audio_dir = "./cache"
+        self.new_audio_dir = "temp"
 
         if not os.path.exists(self.new_audio_dir):
             os.makedirs(self.new_audio_dir)
@@ -80,6 +84,6 @@ class TTSEngine(TTSInterface):
 
 if __name__ == "__main__":
     tts = TTSEngine()
-    file_path = tts.generate_audio("Hello everyone! I am Mira, see you guys at Adelaide Fringe")
+    file_path = tts.generate_audio("This is just a test script.")
     if file_path:
         print(f"Audio saved to {file_path}")

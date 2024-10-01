@@ -98,7 +98,7 @@ GroqWhisperASR:
 
 # ============== Text to Speech ==============
 TTS_ON: True
-# text to speech model options: "AzureTTS", "pyttsx3TTS", "edgeTTS", "barkTTS", "cosyvoiceTTS", "meloTTS", "piperTTS"
+# text to speech model options: "AzureTTS", "pyttsx3TTS", "edgeTTS", "barkTTS", "cosyvoiceTTS", "meloTTS", "piperTTS", "playhtTTS"
 TTS_MODEL: "edgeTTS"
 
 # if on, whenever the LLM finish a sentence, the model will speak, instead of waiting for the full response
@@ -137,6 +137,11 @@ meloTTS:
 piperTTS:
   voice_model_path: "./models/piper_voice/en_US-amy-medium.onnx"
   verbose: False
+
+playhtTTS:
+  voice: "s3://voice-cloning-zero-shot/ea58fa16-2b04-4042-883e-02018079eb9f/au-tenaage-voice/manifest.json"
+  user_id: "aBmeEqyT4Abe6wNaiTGaAX7xCx82"
+  secret_key: "16f2234ed3c3447f819869eeddc7f687"
 
 
 #  ============== Translate (to only change the language for TTS) ==============
